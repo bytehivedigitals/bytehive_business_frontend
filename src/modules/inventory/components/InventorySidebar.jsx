@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Box, FolderTree, Ruler, Building2, MapPin, Tags, PackageSearch, ArrowLeftRight, ChevronRight } from "lucide-react";
+import { Box, FolderTree, Ruler, Building2, MapPin, Tags, PackageSearch, ArrowLeftRight, ChevronRight, Scale, CalendarCheck, ClipboardList } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -11,7 +11,10 @@ const NAV_ITEMS = [
   { label: "Locations", href: "/inventory/locations", icon: MapPin },
   { label: "Location Types", href: "/inventory/location-types", icon: Tags },
   { label: "Transfers", href: "/inventory/transfers", icon: ArrowLeftRight },
+  { label: "Adjustments", href: "/inventory/adjustments", icon: Scale },
+  { label: "Reservations", href: "/inventory/reservations", icon: CalendarCheck },
   { label: "Stock", href: "/inventory/stock", icon: PackageSearch },
+  { label: "Purchase Orders", href: "/inventory/purchase-orders", icon: ClipboardList },
 ];
 
 const InventorySidebar = () => {
