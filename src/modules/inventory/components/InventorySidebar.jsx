@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Box, FolderTree, Ruler, Building2, MapPin, Tags, PackageSearch, ArrowLeftRight, ChevronRight, Scale, CalendarCheck, ClipboardList } from "lucide-react";
+import { Box, FolderTree, Ruler, Building2, MapPin, Tags, PackageSearch, ArrowLeftRight, ChevronRight, Scale, CalendarCheck, ClipboardList, PackageCheck, Receipt, Undo2, DollarSign, LayoutDashboard, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
+  { label: "Dashboard", href: "/inventory/dashboard", icon: LayoutDashboard },
+  { label: "Reports", href: "/inventory/reports", icon: BarChart3 },
   { label: "Items", href: "/inventory/items", icon: Box },
   { label: "Categories", href: "/inventory/categories", icon: FolderTree },
   { label: "Units", href: "/inventory/units", icon: Ruler },
@@ -15,13 +17,17 @@ const NAV_ITEMS = [
   { label: "Reservations", href: "/inventory/reservations", icon: CalendarCheck },
   { label: "Stock", href: "/inventory/stock", icon: PackageSearch },
   { label: "Purchase Orders", href: "/inventory/purchase-orders", icon: ClipboardList },
+  { label: "Goods Receipts", href: "/inventory/goods-receipts", icon: PackageCheck },
+  { label: "Supplier Invoices", href: "/inventory/supplier-invoices", icon: Receipt },
+  { label: "Purchase Returns", href: "/inventory/purchase-returns", icon: Undo2 },
+  { label: "Supplier Payments", href: "/inventory/supplier-payments", icon: DollarSign },
 ];
 
 const InventorySidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-56 h-full bg-black/40 border-r border-white/5 flex flex-col shrink-0">
+    <div className="w-56 h-full bg-black/40 border-r border-white/5 flex flex-col shrink-0 no-print">
       {/* Section Header */}
       <div className="px-5 pt-6 pb-4 border-b border-white/5">
         <div className="flex items-center gap-2.5">

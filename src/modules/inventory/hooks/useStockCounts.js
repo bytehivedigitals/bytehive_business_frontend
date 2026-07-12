@@ -170,7 +170,7 @@ export const useStockCountActions = () => {
       const link = document.createElement("a");
       link.href = url;
       const disposition = response.headers["content-disposition"];
-      let filename = "stock_counts.csv";
+      let filename = "stock_counts.xlsx";
       if (disposition) { const match = disposition.match(/filename="?(.+)"?/); if (match) filename = match[1]; }
       link.setAttribute("download", filename);
       document.body.appendChild(link);

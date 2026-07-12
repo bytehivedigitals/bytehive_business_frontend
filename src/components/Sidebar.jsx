@@ -12,7 +12,7 @@ const Sidebar = () => {
   const { sections, loading, error } = useMenu();
   const location = useLocation();
   return (
-    <div className="h-screen w-64 bg-black border-r border-white/5 flex flex-col font-inter z-30 relative overflow-hidden">
+    <div className="h-screen w-64 bg-black border-r border-white/5 flex flex-col font-inter z-30 relative overflow-hidden no-print">
       {/* Background radial glow */}
       <div className="absolute top-0 left-0 w-full h-full bg-radial-[circle_at_0%_0%] from-white/5 to-transparent pointer-events-none" />
 

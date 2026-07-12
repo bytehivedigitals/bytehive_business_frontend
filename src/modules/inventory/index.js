@@ -1,3 +1,5 @@
+export { default as Dashboard } from "./pages/Dashboard";
+export { default as Reports } from "./pages/Reports";
 export { default as ItemList } from "./pages/ItemList";
 export { default as ItemForm } from "./pages/ItemForm";
 export { default as CategoryList } from "./pages/CategoryList";

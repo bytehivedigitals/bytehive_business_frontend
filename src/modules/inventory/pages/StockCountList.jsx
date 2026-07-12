@@ -665,7 +665,7 @@ const StockCountList = () => {
     return result;
   };
 
-  const handleExport = () => actions.exportStockCounts({ format: "csv" });
+  const handleExport = () => actions.exportStockCounts({ export_format: "xlsx" });
 
   const totalPages = Math.ceil(count / 25);
 

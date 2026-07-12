@@ -205,7 +205,7 @@ export const useAdjustmentActions = () => {
       const link = document.createElement("a");
       link.href = url;
       const disposition = response.headers["content-disposition"];
-      let filename = "adjustments.csv";
+      let filename = "adjustments.xlsx";
       if (disposition) {
         const match = disposition.match(/filename="?(.+)"?/);
         if (match) filename = match[1];

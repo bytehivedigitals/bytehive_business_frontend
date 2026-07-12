@@ -30,7 +30,7 @@ const StockAvailability = () => {
   const { loading: exportLoading, exportStock } = useStockExport();
 
   const handleExport = async () => {
-    await exportStock({ format: "csv", ...filters });
+    await exportStock({ export_format: "xlsx", ...filters });
   };
 
   const handleSnapshot = async () => {

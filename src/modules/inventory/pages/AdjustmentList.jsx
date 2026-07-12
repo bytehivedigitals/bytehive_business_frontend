@@ -660,7 +660,7 @@ const AdjustmentList = () => {
           <p className="text-xs text-white/30 mt-0.5">Correct stock levels with full audit trail</p>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={() => actions.exportAdjustments({ format: "csv" })}
+          <button onClick={() => actions.exportAdjustments({ export_format: "xlsx" })}
             className="px-3.5 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2">
             <FileDown size={14} /> Export
           </button>

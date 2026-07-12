@@ -191,3 +191,176 @@ body {
 .loader .bar10 { transform: rotate(270deg) translate(0, -130%); animation-delay: -0.3s; }
 .loader .bar11 { transform: rotate(300deg) translate(0, -130%); animation-delay: -0.2s; }
 .loader .bar12 { transform: rotate(330deg) translate(0, -130%); animation-delay: -0.1s; }
+
+@media print {
+  html, body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    margin: 15mm 20mm;
+    size: landscape;
+  }
+
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+
+  /* Hide all application chrome */
+  #root > *:not(.printable-report),
+  body > *:not(.printable-report),
+  aside, nav, header:not(.print-header), footer:not(.print-footer),
+  [class*="sidebar"], [class*="sidebar"] *,
+  button, [role="toolbar"], .action-bar,
+  .blob, [class*="blob"],
+  .custom-scrollbar,
+  .no-scrollbar {
+    display: none !important;
+  }
+
+  /* Printable report styles */
+  .printable-report {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    background: white !important;
+    color: #111 !important;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .print-body {
+    min-height: calc(100vh - 30mm);
+  }
+
+  .print-header {
+    margin-bottom: 8mm;
+    border-bottom: 2px solid #222;
+    padding-bottom: 4mm;
+  }
+
+  .print-company {
+    font-size: 16pt !important;
+    font-weight: 800 !important;
+    color: #000 !important;
+    letter-spacing: -0.5px;
+  }
+
+  .print-divider {
+    height: 1px;
+    background: #ccc;
+    margin: 2mm 0;
+  }
+
+  .print-title {
+    font-size: 14pt !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-meta {
+    font-size: 8pt !important;
+    color: #555 !important;
+    margin-top: 1mm;
+  }
+
+  .print-meta-sep {
+    margin: 0 3mm;
+    color: #ccc;
+  }
+
+  .print-filters {
+    margin-top: 2mm;
+    font-size: 7.5pt !important;
+    color: #555 !important;
+  }
+
+  .print-filter-tag {
+    display: inline-block;
+    margin-right: 3mm;
+    padding: 0.5mm 2mm;
+    background: #f0f0f0 !important;
+    border-radius: 2px;
+    font-size: 7.5pt !important;
+  }
+
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8pt !important;
+  }
+
+  .print-table thead {
+    display: table-header-group !important;
+  }
+
+  .print-table th {
+    background: #e8e8e8 !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    padding: 2mm 1.5mm !important;
+    border: 1px solid #bbb !important;
+    font-size: 7.5pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+  }
+
+  .print-table td {
+    padding: 1.5mm !important;
+    border: 1px solid #ccc !important;
+    color: #222 !important;
+    vertical-align: top !important;
+  }
+
+  .print-table tbody tr {
+    page-break-inside: avoid !important;
+  }
+
+  .print-table tbody tr:nth-child(even) td {
+    background: #f7f7f7 !important;
+  }
+
+  .print-table .print-th-row,
+  .print-table .print-td-row {
+    width: 4mm;
+    text-align: center;
+    color: #888 !important;
+    font-size: 7pt !important;
+  }
+
+  .print-table .print-td-row {
+    color: #999 !important;
+  }
+
+  .print-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 12mm;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 2mm 0 !important;
+    border-top: 1px solid #ccc !important;
+    font-size: 7pt !important;
+    color: #888 !important;
+    background: white !important;
+  }
+
+  .page-number {
+    margin-left: auto;
+  }
+
+  .page-number::after {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}

@@ -25,7 +25,7 @@ export const purchaseOrderService = {
   // Export / Print
   export: (format = "csv", params = {}) =>
     api.get(`${BASE}/export/`, {
-      params: { format, ...params },
+      params: { export_format: format, ...params },
       responseType: "blob",
     }),
   printPO: (id) =>

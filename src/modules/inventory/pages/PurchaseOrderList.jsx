@@ -677,7 +677,7 @@ export default function PurchaseOrderList() {
     setTimeout(() => setToast(null), 3000);
   }, []);
 
-  const handleExport = useCallback(async (format = "csv") => {
+  const handleExport = useCallback(async (format = "xlsx") => {
     try {
       const res = await purchaseOrderService.export(format);
       const url = window.URL.createObjectURL(new Blob([res.data]));
@@ -686,7 +686,9 @@ export default function PurchaseOrderList() {
       link.setAttribute("download", `purchase_orders.${format}`);
       document.body.appendChild(link);
       link.click();
-      link.remove();
+      setTimeout(() => {
+        link.remove();
+      }, 100);
       showToast(`Exported as ${format.toUpperCase()}`);
     } catch {
       showToast("Export failed", "error");
@@ -809,7 +811,7 @@ export default function PurchaseOrderList() {
           <p className="text-xs text-white/30 mt-0.5">Manage procurement and goods receipt</p>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={() => handleExport("csv")}
+          <button onClick={() => handleExport("xlsx")}
             className="px-3.5 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2">
             <Download size={14} /> Export
           </button>
