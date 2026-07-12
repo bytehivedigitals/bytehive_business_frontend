@@ -5,7 +5,7 @@ import {
   BarChart3, TrendingUp, AlertTriangle, Clock, Box, Package,
   ArrowLeftRight, Scale, CalendarCheck, ClipboardList, PackageCheck,
   Undo2, Eye, DollarSign, Truck, Lock, Warehouse, Activity,
-  ChevronDown, ChevronUp, Grid3X3, List,
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Grid3X3, List,
 } from "lucide-react";
 import { useReportExport } from "../hooks/useDashboard";
 import PrintableReport from "../components/PrintableReport";
@@ -94,6 +94,7 @@ const Reports = () => {
   const [viewMode, setViewMode] = useState("table");
   const [filters, setFilters] = useState({});
   const [showFilters, setShowFilters] = useState(false);
+  const [reportSidebarOpen, setReportSidebarOpen] = useState(true);
   const [sortField, setSortField] = useState(null);
   const [sortDir, setSortDir] = useState("asc");
   const [page, setPage] = useState(1);
@@ -377,42 +378,65 @@ const Reports = () => {
 
       {/* Report Groups Sidebar */}
       <div className="flex border-b border-white/5">
-        <div className="w-56 shrink-0 border-r border-white/5 px-4 py-4 space-y-4">
-          {REPORT_GROUPS.map((group) => {
-            const GroupIcon = group.icon;
-            const isActive = group.reports.some((r) => r.id === activeReport);
-            return (
-              <div key={group.label}>
-                <div className={`flex items-center gap-2 px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest ${
-                  isActive ? "text-blue-400" : "text-white/30"
-                }`}>
-                  <GroupIcon size={14} />
-                  {group.label}
+        {/* Sidebar panel */}
+        <div
+          className={`transition-all duration-300 ease-in-out overflow-hidden shrink-0 border-r border-white/5 ${
+            reportSidebarOpen ? "w-56 opacity-100" : "w-0 opacity-0"
+          }`}
+        >
+          <div className="w-56 px-4 py-4 space-y-4">
+            {REPORT_GROUPS.map((group) => {
+              const GroupIcon = group.icon;
+              const isActive = group.reports.some((r) => r.id === activeReport);
+              return (
+                <div key={group.label}>
+                  <div className={`flex items-center gap-2 px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest ${
+                    isActive ? "text-blue-400" : "text-white/30"
+                  }`}>
+                    <GroupIcon size={14} />
+                    {group.label}
+                  </div>
+                  <div className="mt-1 space-y-0.5">
+                    {group.reports.map((report) => {
+                      const ReportIcon = report.icon;
+                      const selected = activeReport === report.id;
+                      return (
+                        <button key={report.id} onClick={() => { setActiveReport(report.id); setPage(1); setFilters({}); }}
+                          className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all ${
+                            selected
+                              ? "bg-blue-500/10 text-blue-400 font-bold"
+                              : "text-white/40 hover:text-white hover:bg-white/[0.02]"
+                          }`}>
+                          <ReportIcon size={12} />
+                          {report.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className="mt-1 space-y-0.5">
-                  {group.reports.map((report) => {
-                    const ReportIcon = report.icon;
-                    const selected = activeReport === report.id;
-                    return (
-                      <button key={report.id} onClick={() => { setActiveReport(report.id); setPage(1); setFilters({}); }}
-                        className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all ${
-                          selected
-                            ? "bg-blue-500/10 text-blue-400 font-bold"
-                            : "text-white/40 hover:text-white hover:bg-white/[0.02]"
-                        }`}>
-                        <ReportIcon size={12} />
-                        {report.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 relative">
+          {/* Toggle button — visible, sits on the sidebar border */}
+          <button
+            onClick={() => setReportSidebarOpen(!reportSidebarOpen)}
+            className={`absolute z-10 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 shadow-lg shadow-black/40 ${
+              reportSidebarOpen
+                ? "-left-3 top-3 bg-gray-800/90 border border-white/15 hover:bg-gray-700 hover:border-white/30"
+                : "left-3 top-3 bg-blue-600/90 border border-blue-500/30 hover:bg-blue-500 hover:border-blue-400/50"
+            }`}
+            title={reportSidebarOpen ? "Collapse report sidebar" : "Expand report sidebar"}
+          >
+            {reportSidebarOpen ? (
+              <ChevronLeft size={15} className="text-white/80" />
+            ) : (
+              <ChevronRight size={15} className="text-white" />
+            )}
+          </button>
           {/* Filters */}
           {showFilters && (
             <div className="px-6 py-4 border-b border-white/5 bg-white/[0.01]">
