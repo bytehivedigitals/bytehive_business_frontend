@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { MenuProvider } from "./context/MenuContext";
+import { FeatureProvider } from "./context/FeatureContext";
 import Login from "./modules/auth/pages/Login";
 import Dashboard from "./modules/dashboard/pages/Dashboard";
 import CRM from "./modules/crm/pages/CRM";
@@ -26,6 +27,7 @@ import AdminMenuForm from "./modules/admin/pages/AdminMenuForm";
 import AdminMenuRoles from "./modules/admin/pages/AdminMenuRoles";
 import AdminOrganizations from "./modules/admin/pages/AdminOrganizations";
 import AdminProducts from "./modules/admin/pages/AdminProducts";
+import InventoryFeatureManagement from "./modules/admin/pages/InventoryFeatureManagement";
 import {
   InvoiceList,
   InvoiceDetail,
@@ -78,6 +80,7 @@ function App() {
   return (
     <AuthProvider>
       <MenuProvider>
+        <FeatureProvider>
         <Router>
           <Routes>
             <Route path="/login" element={<Login />} />
@@ -276,6 +279,14 @@ function App() {
               }
             />
             <Route
+              path="/admin/inventory-config"
+              element={
+                <AdminRoute>
+                  <InventoryFeatureManagement />
+                </AdminRoute>
+              }
+            />
+            <Route
               path="/admin/invoices"
               element={
                 <AdminRoute>
@@ -314,6 +325,7 @@ function App() {
             <Route path="/" element={<Navigate to="/login" replace />} />
           </Routes>
         </Router>
+      </FeatureProvider>
       </MenuProvider>
     </AuthProvider>
   );

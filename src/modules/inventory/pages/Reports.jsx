@@ -4,7 +4,7 @@ import {
   Search, Download, Filter, RefreshCw, Printer, FileText, FileSpreadsheet,
   BarChart3, TrendingUp, AlertTriangle, Clock, Box, Package,
   ArrowLeftRight, Scale, CalendarCheck, ClipboardList, PackageCheck,
-  Undo2, Eye, DollarSign, Truck, Lock, Warehouse, Activity,
+  Undo2, Eye, IndianRupee, Truck, Lock, Warehouse, Activity,
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Grid3X3, List,
 } from "lucide-react";
 import { useReportExport } from "../hooks/useDashboard";
@@ -39,7 +39,7 @@ const REPORT_GROUPS = [
       { id: "stock-ledger", label: "Stock Ledger", icon: FileText, hook: "useStockLedgerReport" },
       { id: "stock-movement", label: "Stock Movement", icon: TrendingUp, hook: "useStockMovementReport" },
       { id: "stock-summary", label: "Stock Summary", icon: BarChart3, hook: "useStockSummaryReport" },
-      { id: "valuation", label: "Inventory Valuation", icon: DollarSign, hook: "valuation" },
+      { id: "valuation", label: "Inventory Valuation", icon: IndianRupee, hook: "valuation" },
       { id: "reserved-stock", label: "Reserved Stock", icon: Lock, hook: "reserved" },
       { id: "damaged-stock", label: "Damaged Stock", icon: AlertTriangle, hook: "damaged" },
     ],

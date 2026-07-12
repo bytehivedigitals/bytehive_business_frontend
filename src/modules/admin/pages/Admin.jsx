@@ -7,6 +7,7 @@ import {
   Lock, 
   Users, 
   Briefcase, 
+  Package, 
   ChevronRight 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -88,6 +89,14 @@ const Admin = () => {
       description: "Manage menus, orgs, and products",
       colorClass: "bg-emerald-500",
       onClick: () => navigate("/admin/menus"),
+    },
+    {
+      id: 'inventory-config',
+      icon: Package,
+      title: "INVENTORY CONFIG",
+      description: "Enable/disable inventory features per company",
+      colorClass: "bg-blue-500",
+      onClick: () => navigate("/admin/inventory-config"),
     },
   ];
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Package, DollarSign, Warehouse, Lock, Truck, AlertTriangle,
+  Package, IndianRupee, Warehouse, Lock, Truck, AlertTriangle,
   CalendarCheck, ArrowLeftRight, ClipboardList, PackageCheck,
   Scale, RefreshCw, TrendingUp, ShoppingCart, PieChart,
   Clock, AlertCircle, Activity, Box, Eye,
@@ -20,18 +20,18 @@ const PURPLE_FILL = "rgba(167,139,250,0.7)";
 
 const formatCurrency = (value) => {
   if (!value && value !== 0) return "—";
-  return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return Number(value).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 };
 
 const formatNumber = (value) => {
   if (!value && value !== 0) return "—";
-  return Number(value).toLocaleString();
+  return Number(value).toLocaleString("en-IN");
 };
 
 const CARD_CONFIG = [
   { key: "total_items", label: "Total Items", icon: Package, color: "blue", format: "number" },
-  { key: "total_stock_value", label: "Total Stock Value", icon: DollarSign, color: "emerald", format: "currency" },
-  { key: "available_stock_value", label: "Available Stock Value", icon: DollarSign, color: "green", format: "currency" },
+  { key: "total_stock_value", label: "Total Stock Value", icon: IndianRupee, color: "emerald", format: "currency" },
+  { key: "available_stock_value", label: "Available Stock Value", icon: IndianRupee, color: "green", format: "currency" },
   { key: "reserved_items", label: "Reserved Stock", icon: Lock, color: "amber", format: "number" },
   { key: "in_transit_items", label: "In Transit", icon: Truck, color: "cyan", format: "number" },
   { key: "damaged_items", label: "Damaged Stock", icon: AlertTriangle, color: "red", format: "number" },
@@ -60,7 +60,7 @@ const colorMap = {
 
 const formatCardValue = (val, format) => {
   if (!val && val !== 0) return "—";
-  if (format === "currency") return `$${formatCurrency(val)}`;
+  if (format === "currency") return `₹${formatCurrency(val)}`;
   return formatNumber(val);
 };
 

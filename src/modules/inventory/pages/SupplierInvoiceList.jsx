@@ -3,7 +3,7 @@ import {
   Search, Plus, X, ChevronDown, Download,
   CheckCircle, XCircle, Send, Ban, FileDown, Loader2,
   History, ClipboardList, Activity, FileText, ArrowUpDown, Printer,
-  Eye, Edit3, Trash2, DollarSign, AlertTriangle,
+  Eye, Edit3, Trash2, IndianRupee, AlertTriangle,
 } from "lucide-react";
 import {
   useSupplierInvoices,
@@ -573,7 +573,7 @@ const DetailModal = ({ invoice, isOpen, onClose, onAction, historyData, loading,
           {canPay && (
             <button onClick={() => onAction("payment")}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs hover:bg-emerald-500/20">
-              <DollarSign size={12} /> Record Payment
+              <IndianRupee size={12} /> Record Payment
             </button>
           )}
           {canCancel && (
@@ -1029,7 +1029,7 @@ const SupplierInvoiceList = () => {
                         {(inv.status === "POSTED" || inv.status === "PARTIALLY_PAID") && (
                           <button onClick={() => openPayment(inv)}
                             className="p-1.5 rounded-lg hover:bg-emerald-500/10 text-emerald-400/60 hover:text-emerald-400">
-                            <DollarSign size={14} />
+                            <IndianRupee size={14} />
                           </button>
                         )}
                         {inv.status === "DRAFT" && (

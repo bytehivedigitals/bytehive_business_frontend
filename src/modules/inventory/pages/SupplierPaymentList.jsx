@@ -3,7 +3,7 @@ import {
   Search, Plus, X, Download,
   CheckCircle, XCircle, Send, Ban, FileDown, Loader2,
   History, Activity, FileText, ArrowUpDown,
-  Eye, Edit3, Trash2, DollarSign,
+  Eye, Edit3, Trash2, IndianRupee,
 } from "lucide-react";
 import axios from "axios";
 import { useSupplierPayments, useSupplierPayment, useSupplierPaymentActions, useSupplierPaymentHistory } from "../hooks/useSupplierPayments";
@@ -351,7 +351,7 @@ const PaymentDetail = ({ pm, onClose, onAction, history, actionLoading }) => {
           <div className="flex items-center gap-2">
             {canSubmit && <ActionButton icon={Send} label="Submit" onClick={() => onAction("submit", pm.id)} loading={actionLoading} color="blue" />}
             {canApprove && <ActionButton icon={CheckCircle} label="Approve" onClick={() => onAction("approve", pm.id)} loading={actionLoading} color="emerald" />}
-            {canPost && <ActionButton icon={DollarSign} label="Post" onClick={() => onAction("post", pm.id)} loading={actionLoading} color="indigo" />}
+            {canPost && <ActionButton icon={IndianRupee} label="Post" onClick={() => onAction("post", pm.id)} loading={actionLoading} color="indigo" />}
             {canCancel && <ActionButton icon={Ban} label="Cancel" onClick={() => onAction("cancel", pm.id)} loading={actionLoading} color="red" />}
             {canVoid && <ActionButton icon={XCircle} label="Void" onClick={() => onAction("void", pm.id)} loading={actionLoading} color="red" />}
             <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-zinc-800 text-white/60 hover:text-white transition-colors">
@@ -392,7 +392,7 @@ const PaymentDetail = ({ pm, onClose, onAction, history, actionLoading }) => {
           <div className="mb-4 border-b border-zinc-800">
             <div className="flex gap-4">
               {[
-                { key: "allocations", label: "Allocations", icon: DollarSign },
+                { key: "allocations", label: "Allocations", icon: IndianRupee },
                 { key: "details", label: "Details", icon: FileText },
                 { key: "history", label: "History", icon: History },
                 { key: "attachments", label: "Attachments", icon: FileText },
